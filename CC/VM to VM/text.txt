@@ -1,0 +1,58 @@
+Syntax: The basic syntax of the scp command is:
+
+scp [options] [source] [destination]
+
+Transfer: To transfer a file from the source to the destination, use the following command:
+
+scp /path/to/local/file username@destination:/path/to/destination
+
+Replace:
+/path/to/local/file with the path to the file you want to transfer.
+username with the username of the destination system.
+destination with the IP address or hostname of the destination system.
+/path/to/destination with the path on the destination system where you want to save the file.
+
+
+For example:
+
+scp /home/user/documents/example.txt user@192.168.1.100:/home/user/destination/
+
+
+
+vagrant (ubuntu-18.04-amd64-disk001.vmdk): 
+https://drive.google.com/drive/u/0/folders/1me_nJJh0fvdDOXX3ew2jzGQpoP7f_iFt
+
+virtual box :
+https://www.virtualbox.org/wiki/Downloads
+
+## VM 1
+
+      username:vagrant
+      password:vagrant
+
+      ifconfig // note inet address
+
+
+## VM 2
+
+      username:vagrant
+      password:vagrant
+
+      ifconfig // note inet address
+
+## VM 1
+
+      ping <ip of vm2>
+      touch transfer.txt
+      nano transfer.txt
+      //write content->Press Ctr X -> Y -> Enter
+      cat transfer.txt
+      scp transfer.txt vagrant@<ip of 2nd vm>:/home/vagrant
+
+## VM 2
+
+      ls //to see the transfered file from vm1
+
+### Note: If command ifconfig is not found then
+
+      sudo apt install net-tools
