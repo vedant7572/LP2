@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delete Student</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <style>
+      .container {
+        margin: auto;
+        margin-top: 20px;
+        max-width: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="mb-3">
+        <label for="studentId" class="form-label"
+          >Enter the ID of the student you want to update the marks by 10</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="studentId"
+          placeholder="Student ID"
+        />
+      </div>
+      <button type="button" class="btn btn-primary" id="updateButton">
+        Update Student Marks
+      </button>
+    </div>
+
+    <script>
+      document
+        .getElementById("updateButton")
+        .addEventListener("click", async () => {
+          var student_id = document.getElementById("studentId").value;
+          try {
+            const response = await fetch(`http://localhost:2324/update_marks/${student_id}`, {
+              method: "PUT",
+            });
+            const data = await response.text();
+            alert(data);
+          } catch (err) {
+            alert(err);
+          }
+        });
+    </script>
+  </body>
+</html>
+
+
