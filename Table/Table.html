@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td{
+            width: 100px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+    <form id="inputForm">
+        <h3>Enter Input 1: <input type="text" name="input1" value="3#3#3" style="font-size:large;"></h3>
+        <br>
+        <h3>Enter Input 2: <input type="text" name="input2" value="3#3#2" style="font-size:large;"></h3>
+        <br>
+        <button style="font-size:x-large;">Submit</button>
+    </form>
+    <br><br>
+    <table border="1px" id="table1">Table 1</table>
+    <hr>
+    <table border="1px" id="table2">Table 2</table>
+    <hr>
+    <table border="1px" id="table3">Table 3</table>
+    <center>
+
+    <script>
+        const form = document.getElementById("inputForm")
+        form.addEventListener("submit", formSubmit)
+
+        function formSubmit(event) {
+            event.preventDefault();
+        
+            let input1 = form.input1.value;
+            let input2 = form.input2.value;
+        
+            input1 = input1.split("#");
+            input2 = input2.split("#");
+        
+            let table1 = createTable(input1);
+            let table2 = createTable(input2);
+        
+            if (input1[2] === input2[2] && input1[0] === input2[0] && input1[1] === input2[1]) {
+                displayTable(table1, "table3");
+            } else {
+                // Do not display table3 if the conditions are not met
+                document.getElementById("table3").innerHTML = "";
+            }
+        
+            // displaying tables
+            displayTable(table1, "table1");
+            displayTable(table2, "table2");
+        }
+        
+        
+
+        function createTable(input) { // [rows, columns, startIndex]
+            let table = []
+            for (let row = 0; row < input[0]; row++) {
+                table.push([])
+            }
+
+            let count = input[2]
+
+            for (let col = 0; col < input[1]; col++) {
+                table[0][col] = count++
+                for (let row = 0; row < input[0]; row++){
+                    table[row][col] = (row + 1) * table[0][col]
+                }
+            }
+            return table;
+        }
+
+        function multiply(table1, table2) {
+            let table = []
+            for (let i = 0; i < table1.length; i++) {
+                let row = []
+                for (let j = 0; j < table1[0].length; j++) {
+                    row.push(table1[i][j] * table2[i][j])
+                }
+                table.push(row)
+            }
+
+            return table
+        }
+
+        function displayTable(table, id) {
+            const tableOutput = document.getElementById(id)
+
+            let html = "";
+            for (let i = 0; i < table.length; i++) {
+                html += "<tr>";
+                for (let j = 0; j < table[0].length; j++) {
+                    html += "<td>";
+                    html += table[i][j]
+                    html += "</td>";
+                }
+                html += "</tr>";
+            }
+
+            tableOutput.innerHTML = html
+        }
+
+        
+    </script>
+
+</body>
+
+</html>
