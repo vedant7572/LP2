@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <title>PICT Website</title>
+</head>
+<body>
+    <div data-role="header"
+        style="background-color: blue; text-align: center; width: 100%; height: 60px; margin-top: 5px;">
+        <h1 style="color: #fff; font-size: 20px;">Pune Institute Of Computer Technology</h1>
+    </div>
+    <div data-role="navbar" style="background-color: #fff;">
+        <ul>
+            <li><a href="./index.html" style="color: #000;">Home</a></li>
+            <li><a href="./about.html" style="color: #000;">About</a></li>
+            <li><a href="./login.html" style="color: #000;">Login/Register</a></li>
+        </ul>
+    </div>
+    <div data-role="content" style="width: 50%; margin: 5% auto; background-color: rgb(201, 203, 205);">
+        <center><h1>Login</h1></center>
+        <div data-role="form">
+            <label for="username">Username</label>
+            <input type="text" class="username" required>
+            <label for="email">Email</label>
+            <input type="email" class="email" required>
+            <label for="password">Password</label>
+            <input type="password" class="password" required>
+            <center>
+                <a href="./index.html" class="ui-btn ui-btn-inline">Login</a>
+            </center>
+        </div>
+    </div>
+</body>
+</html>
